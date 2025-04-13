@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1a4dbe;
+  --background: #030712;
+  --accent-glow: rgba(26, 77, 190, 0.4);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: white;
+}
+
+.gradient-bg {
+  background: radial-gradient(circle at 50% 50%, #030712 0%, #0a1529 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: scan-line 3s linear infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.logo-slider {
+  padding: 40px 0;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.logo-slide-track {
+  display: flex;
+  animation: logo-scroll 40s linear infinite;
+  width: calc(350px * 18); /* Increased width for larger logos */
+}
+
+.logo-slide {
+  width: 350px; /* Increased width for larger logos */
+  padding: 0 50px; /* Increased padding for better spacing */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-350px * 6)); /* Adjusted for new logo width */
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.neon-glow {
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.futuristic-button {
+  position: relative;
+  background: linear-gradient(45deg, var(--primary), #2563eb);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.futuristic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.futuristic-button:hover::before {
+  left: 100%;
+}
+
+.futuristic-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.futuristic-button:hover::after {
+  opacity: 1;
+}
+
+.futuristic-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.client-logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+  transition: all 0.5s ease;
+}
+
+.client-logo:hover {
+  opacity: 1;
+  filter: brightness(1) invert(0);
+  transform: scale(1.05);
+}
+
+.grid-background {
+  background-image: linear-gradient(rgba(26, 77, 190, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 77, 190, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+}
